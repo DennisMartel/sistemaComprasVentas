@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('admin.cateory.create');
+        return view('admin.category.create');
     }
 
     public function store(StoreRequest $request)
