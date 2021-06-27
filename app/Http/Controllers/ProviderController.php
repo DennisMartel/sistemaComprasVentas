@@ -27,12 +27,12 @@ class ProviderController extends Controller
     
     public function show(Provider $provider)
     {
-        return view('admin.provider.index', compact('provider'));
+        return view('admin.provider.show', compact('provider'));
     }
     
     public function edit(Provider $provider)
     {
-        return view('admin.provider.index', compact('provider'));
+        return view('admin.provider.edit', compact('provider'));
     }
     
     public function update(UpdateRequest $request, Provider $provider)

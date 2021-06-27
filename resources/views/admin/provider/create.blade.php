@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Registrar Categoria')
+@section('title', 'Registrar Proveedor')
 
 @section('styles')
   
@@ -10,25 +10,25 @@
 <div class="content-wrapper">
   <div class="page-header">
     <h3 class="page-title">
-      Registro de Categorias
+      Registro de Poveedores
     </h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Panel Administrativo</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categorias</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Registrar categoria</li>
+        <li class="breadcrumb-item"><a href="{{ route('providers.index') }}">Poveedores</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Registrar Proveedor</li>
       </ol>
     </nav>
   </div>
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title">Registro de Categorias</h4>
+            <h4 class="card-title">Registro de Poveedores</h4>
         </div>
-        {!! Form::open(['route' => 'categories.store', 'method' => 'POST']) !!}
-          @include('admin.category._form')
+        {!! Form::open(['route' => 'providers.store', 'method' => 'POST']) !!}
+          @include('admin.provider._form')
           <button type="submit" class="btn btn-primary">Guardar</button>
-          <a href="{{ route('categories.index') }}" class="btn btn-light">Cancelar</a>
+          <a href="{{ route('providers.index') }}" class="btn btn-light">Cancelar</a>
         {!! Form::close() !!}
       </div>
     </div>

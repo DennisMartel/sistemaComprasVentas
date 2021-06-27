@@ -25,7 +25,17 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
-        Product::create($request->all());
+        if ($request->hasFile('picture'))
+        {
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $myImage = $file->move(public_path('/image'), $image_name);
+        }
+
+        Product::create($request->all() + [
+            'imagen' => $myImage,
+        ]);
+
         return redirect()->route('products.index');
     }
     
@@ -38,18 +48,28 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.products.index', compact('product','categories','providers'));
+        return view('admin.products.edit', compact('product','categories','providers'));
     }
     
     public function update(UpdateRequest $request, Product $products)
     {
-        $products->update($request->all());
+        if ($request->hasFile('imagen'))
+        {
+            $file = $request->file('imagen');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('/image'), $image_name);
+        }
+
+        $products->update($request->all()+ [
+            'imagen' => $image_name,
+        ]);
+        
         return redirect()->route('products.index');
     }
     
-    public function destroy(Product $products)
+    public function destroy(Product $product)
     {
-        $products->delete();
+        $product->delete();
         return redirect()->route('products.index');
     }
 }

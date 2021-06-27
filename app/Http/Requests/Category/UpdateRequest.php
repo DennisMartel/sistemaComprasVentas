@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:50',
+            'name' => 'required|string|max:50|unique:categories,name,'.$this->route('category')->id,
             'description' => 'nullable|string|max:250',
         ];
     }
@@ -35,6 +35,7 @@ class UpdateRequest extends FormRequest
             'name.required' => 'El nombre de la categoria es requerido',
             'name.string' => 'El valor no es permitido',
             'name.max' => 'El máximo de caráteres permitidos son 50',
+            
             'description.string' => 'El valor no es correcto',
             'description.max' => 'El máximo de caráteres permitidos son 255',
         ];

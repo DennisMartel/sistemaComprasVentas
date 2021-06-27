@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Gestión de Categorias')
+@section('title', 'Gestión de Proveedores')
 
 @section('styles')
   
@@ -10,24 +10,24 @@
 <div class="content-wrapper">
   <div class="page-header">
     <h3 class="page-title">
-      Categorias
+      Proveedores
     </h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Panel Administrativo</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Categorias</li>
+        <li class="breadcrumb-item active" aria-current="page">Proveedores</li>
       </ol>
     </nav>
   </div>
   <div class="card">
     <div class="card-body">
       <div class="d-flex justify-content-between">
-          <h4 class="card-title">Categorias</h4>
+          <h4 class="card-title">Proveedores</h4>
           <div class="nav-link">
             {{-- <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">English</span> --}}
           <i class="fas fa-ellipsis-v" data-toggle="dropdown"></i>
           <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-            <a class="dropdown-item font-weight-medium" href="{{ route('categories.create') }}">
+            <a class="dropdown-item font-weight-medium" href="{{ route('providers.create') }}">
               Agregar
             </a>
           </div>
@@ -41,21 +41,27 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Correo</th>
+                    <th>Codigo</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
                     <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($categories as $category)
+                @foreach($providers as $provider)
                   <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
+                    <td>{{ $provider->id }}</td>
+                    <td><a href="{{ route('providers.show', $provider) }}">{{ $provider->name }}</a></td>
+                    <td>{{ $provider->email }}</td>
+                    <td>{{ $provider->ruc_number }}</td>
+                    <td>{{ $provider->address }}</td>
+                    <td>{{ $provider->phone }}</td>
                     <td>
-                      {!! Form::open(['route' => ['categories.destroy', $category], 'method' => 'DELETE']) !!}
-                      <a href="{{ route('categories.edit', $category) }}" class="jsgrid-button jsgrid-edit-button" title="Editar categoria {{ $category->name }}"><i class="fas fa-edit"></i></a>
+                      {!! Form::open(['route' => ['providers.destroy', $provider], 'method' => 'DELETE']) !!}
+                      <a href="{{ route('providers.edit', $provider) }}" class="jsgrid-button jsgrid-edit-button" title="Editar categoria {{ $provider->name }}"><i class="fas fa-edit"></i></a>
                       
-                      <button type="submit" class="jsgrid-button jsgrid-delete-button text-danger" title="Eliminar categoria {{ $category->name }}" style="border: none; background: none; padding: 0;"><i class="far fa-trash-alt"></i></button>
+                      <button type="submit" class="jsgrid-button jsgrid-delete-button text-danger" title="Eliminar categoria {{ $provider->name }}" style="border: none; background: none; padding: 0;"><i class="far fa-trash-alt"></i></button>
                       {!! Form::close() !!}
                     </td>
                   </tr>

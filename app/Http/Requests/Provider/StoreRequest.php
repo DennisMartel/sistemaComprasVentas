@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -42,10 +42,10 @@ class StoreRequest extends FormRequest
             'email.required' => 'El email es requerido', 
             'email.string' => 'El valor no es correcto', 
             'email.max' => 'Solo se permiten 255 caracteres', 
-            'email.email' => 'No se un correo electronico', 
+            'email.email' => 'No es un correo electronico', 
             'email.unique' => 'Ya existe el email', 
 
-            'ruc_number.required' => 'El Dui es requerido', 
+            'ruc_number.required' => 'El campo es requerido', 
             'ruc_number.string' => 'El valor no es correcto', 
             'ruc_number.max' => 'Solo se permiten 10 caracteres como maximo', 
             'ruc_number.min' => 'Solo se permiten 10 caracteres como minimo', 

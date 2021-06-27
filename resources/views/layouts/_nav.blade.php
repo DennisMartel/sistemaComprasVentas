@@ -17,17 +17,29 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="index-2.html">
-          <i class="fa fa-home menu-icon"></i>
-          <span class="menu-title">Dashboard</span>
+          <i class="fa fa-tachometer-alt menu-icon"></i>
+          <span class="menu-title">Escritorio</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/widgets.html">
-          <i class="fa fa-puzzle-piece menu-icon"></i>
-          <span class="menu-title">Widgets</span>
+        <a class="nav-link" href="{{ route('categories.index') }}">
+          <i class="fa fa-tags menu-icon"></i>
+          <span class="menu-title">Categorias</span>
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('providers.index') }}">
+          <i class="fa fa-truck menu-icon"></i>
+          <span class="menu-title">Proveedores</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('products.index') }}">
+          <i class="fa fa-cubes menu-icon"></i>
+          <span class="menu-title">Productos</span>
+        </a>
+      </li>
+      {{-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
           <i class="fab fa-trello menu-icon"></i>
           <span class="menu-title">Page Layouts</span>
@@ -46,6 +58,6 @@
           <i class="far fa-file-alt menu-icon"></i>
           <span class="menu-title">Documentation</span>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </nav>
