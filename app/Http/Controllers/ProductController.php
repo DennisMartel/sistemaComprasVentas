@@ -13,14 +13,14 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        return view('admin.product.index', compact('products'));
     }
 
     public function create()
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.products.create', compact('categories', 'providers'));
+        return view('admin.product.create', compact('categories', 'providers'));
     }
 
     public function store(StoreRequest $request)
@@ -29,33 +29,33 @@ class ProductController extends Controller
         {
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
-            $myImage = $file->move(public_path('/image'), $image_name);
+            $file->move(public_path('/image'), $image_name);
         }
 
         Product::create($request->all() + [
-            'imagen' => $myImage,
+            'imagen' => $image_name,
         ]);
 
         return redirect()->route('products.index');
     }
     
-    public function show(Product $products)
+    public function show(Product $product)
     {
-        return view('admin.products.index', compact('products'));
+        return view('admin.product.show', compact('product'));
     }
     
     public function edit(Product $product)
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.products.edit', compact('product','categories','providers'));
+        return view('admin.product.edit', compact('product','categories','providers'));
     }
     
     public function update(UpdateRequest $request, Product $products)
     {
-        if ($request->hasFile('imagen'))
+        if ($request->hasFile('picture'))
         {
-            $file = $request->file('imagen');
+            $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path('/image'), $image_name);
         }
