@@ -29,13 +29,18 @@
               <div class="col-lg-4">
                 <div class="border-bottom text-center pb-4">
                     <h3>{{ $product->name }}</h3>
+                    <img src="{{ asset('image/'.$product->imagen) }}" alt="{{ $product->imagen }}" width="150">
                 </div>
                 <div class="border-bottom py-4">
-                  <div class="list-group">
-                      <button type="button" class="list-group-item list-group-item-action active">Sobre Producto</button>
-                      <button type="button" class="list-group-item list-group-item-action">Productos</button>
-                      <button type="button" class="list-group-item list-group-item-action">Registrar Producto</button>
-                  </div>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
+                      Sobre Producto
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      En stock
+                      <span class="badge badge-primary badge-pill">{{ $product->stock }}</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="col-lg-8 pl-lg-5">
@@ -52,20 +57,24 @@
                           <hr>
 
                           <strong><i class="fas fa-address-card mr-2"></i> Código</strong>
-                          <p class="text-muted">{{ $product->ruc_number }}</p>
+                          <p class="text-muted">{{ $product->code }}</p>
+                          <hr>
+
+                          <strong><i class="fas fa-dollar-sign mr-2"></i> Precio Venta</strong>
+                          <p class="text-muted">${{ $product->sell_price }}</p>
                           <hr>
                       </div>
                       <div class="col-md-6">
-                        <strong><i class="fas fa-mobile-alt mr-2"></i> Telefóno</strong>
-                        <p class="text-muted">{{ $product->phone }}</p>
+                        <strong><i class="fas fa-thumbs-up mr-2"></i> Estado</strong>
+                        <p class="text-muted">{{ $product->status }}</p>
                         <hr>
 
-                        <strong><i class="fas fa-envelope mr-2"></i> Correo</strong>
-                        <p class="text-muted">{{ $product->email }}</p>
+                        <strong><i class="fas fa-tag mr-2"></i> Categoria</strong>
+                        <p class="text-muted">{{ $product->category->name }}</p>
                         <hr>
 
-                        <strong><i class="fas fa-map-marker-alt mr-2"></i> Dirección</strong>
-                        <p class="text-muted">{{ $product->address }}</p>
+                        <strong><i class="fas fa-truck mr-2"></i> Proveedor</strong>
+                        <p class="text-muted">{{ $product->provider->name }}</p>
                         <hr>
                       </div>
                   </div>

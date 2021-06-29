@@ -51,7 +51,7 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product','categories','providers'));
     }
     
-    public function update(UpdateRequest $request, Product $products)
+    public function update(UpdateRequest $request, Product $product)
     {
         if ($request->hasFile('picture'))
         {
@@ -60,7 +60,7 @@ class ProductController extends Controller
             $file->move(public_path('/image'), $image_name);
         }
 
-        $products->update($request->all()+ [
+        $product->update($request->all()+ [
             'imagen' => $image_name,
         ]);
         

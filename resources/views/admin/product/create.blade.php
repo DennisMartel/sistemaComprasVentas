@@ -26,7 +26,7 @@
             <h4 class="card-title">Registro de Productos</h4>
         </div>
         {!! Form::open(['route' => 'products.store', 'method' => 'POST', 'files' => true]) !!}
-          @include('admin.products._form')
+          @include('admin.product._form')
           <button type="submit" class="btn btn-primary">Guardar</button>
           <a href="{{ route('products.index') }}" class="btn btn-light">Cancelar</a>
         {!! Form::close() !!}

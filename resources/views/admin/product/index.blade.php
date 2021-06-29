@@ -45,6 +45,7 @@
                     <th>Stock</th>
                     <th>Estado</th>
                     <th>Categoria</th>
+                    <th>Miniatura</th>
                     <th>Acciones</th>
                 </tr>
               </thead>
@@ -57,6 +58,7 @@
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->status }}</td>
                     <td>{{ $product->category->name }}</td>
+                    <td><img src="{{ asset('image/'.$product->imagen) }}" alt="{{ $product->imagen }}"></td>
                     <td>
                       {!! Form::open(['route' => ['products.destroy', $product], 'method' => 'DELETE']) !!}
                       <a href="{{ route('products.edit', $product) }}" class="jsgrid-button jsgrid-edit-button" title="Editar categoria {{ $product->name }}"><i class="fas fa-edit"></i></a>

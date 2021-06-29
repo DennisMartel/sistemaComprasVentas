@@ -70,13 +70,6 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        {{-- <div class="form-group">
-            <label for="imagen">Imagen</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" name="picture" id="picture">
-                <label class="custom-file-label" for="customFile">Seleccionar archivo...</label>
-            </div>
-        </div> --}}
         <div class="card">
           <div class="card-body">
             <h4 class="card-title d-flex">Imagen de Producto
