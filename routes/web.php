@@ -6,6 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
 
 Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('clients', App\Http\Controllers\ClientController::class);
@@ -17,3 +18,5 @@ Route::resource('sales', App\Http\Controllers\SaleController::class);
 Route::get('/prueba', function () {
     return view('prueba');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
