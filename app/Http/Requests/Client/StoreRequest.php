@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,10 +26,11 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'string|required|max:255',
             'dui' => 'string|required|unique:clients|max:10|min:10',
-            'ruc' => 'string|required|unique:clients|max:20',
+            'ruc' => 'nullable|string|required|unique:clients|max:20',
             'address' => 'nullable|string|required|max:500',
             'phone' => 'string|required|unique:clients|max:9',
-            'email' => 'nullable|string|required|unique:clients|max:255|email:ruc,dui',
+            // 'email' => 'nullable|string|required|unique:clients|max:255|email:ruc,dui',
+            'email' => 'nullable|string|required|unique:clients|max:255',
         ];
     }
 

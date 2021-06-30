@@ -39,6 +39,24 @@
           <span class="menu-title">Productos</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('clients.index') }}">
+          <i class="fa fa-users menu-icon"></i>
+          <span class="menu-title">Clientes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('purchases.index') }}">
+          <i class="fa fa-shopping-basket menu-icon"></i>
+          <span class="menu-title">Compras</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('sales.index') }}">
+          <i class="fa fa-cart-arrow-down menu-icon"></i>
+          <span class="menu-title">Ventas</span>
+        </a>
+      </li>
       {{-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
           <i class="fab fa-trello menu-icon"></i>

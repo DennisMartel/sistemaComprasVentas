@@ -22,28 +22,28 @@ public function index()
     public function store(StoreRequest $request)
     {
         Client::create($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
     
     public function show(Client $client)
     {
-        return view('admin.client.index', compact('client'));
+        return view('admin.client.show', compact('client'));
     }
     
     public function edit(Client $client)
     {
-        return view('admin.client.index', compact('client'));
+        return view('admin.client.edit', compact('client'));
     }
     
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
     
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 }

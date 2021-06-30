@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,10 +26,10 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'string|required|max:255',
             'dui' => 'string|required|unique:clients,dui,'.$this->route('client')->id.'|max:10|min:10',
-            'ruc' => 'string|required|unique:clients,ruc,'.$this->route('client')->id.'|max:20',
+            'ruc' => 'nullable|string|required|unique:clients,ruc,'.$this->route('client')->id.'|max:20',
             'address' => 'nullable|string|required|max:500',
             'phone' => 'string|required|unique:clients,phone,'.$this->route('client')->id.'|max:9',
-            'email' => 'nullable|string|required|unique:clients,email,'.$this->route('client')->id.'|max:255|email:ruc,dui',
+            'email' => 'nullable|string|required|unique:clients,email,'.$this->route('client')->id.'|max:255',
         ];
     }
 
