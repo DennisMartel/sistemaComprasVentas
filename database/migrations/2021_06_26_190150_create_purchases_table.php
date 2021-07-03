@@ -16,15 +16,19 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('provider_id');
-            $table->foreign('provider_id')->references('id')->on('providers');
+
+            $table->foreign('provider_id')->references('id')->on('providers')
+                    ->onDelete('cascade')->onUpdate('cascade');
+                    
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->onDelete('cascade')->onUpdate('cascade');
             // $table->timestamps();
             $table->dateTime('purchase_date');
-            $table->decimal('tax');
+            $table->decimal('tax')->nullable();
             $table->decimal('total');
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

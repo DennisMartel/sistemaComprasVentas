@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Detalles Proveedor '. $provider->name)
+@section('title', 'Detalles de la compra '. $purchase->id)
 
 @section('styles')
   
@@ -11,13 +11,13 @@
 <div class="content-wrapper">
     <div class="page-header">
       <h3 class="page-title">
-        Proveedores
+        Detalle de la compra
       </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Panel Administrativo</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('providers.index') }}">Proveedores</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Detalle Proveedor</li>
+          <li class="breadcrumb-item"><a href="{{ route('purchases.index') }}">Compras</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Detalle de la compra</li>
         </ol>
       </nav>
     </div>
@@ -25,56 +25,60 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="border-bottom text-center pb-4">
-                    <h3>{{ $provider->name }}</h3>
-                </div>
-                <div class="border-bottom py-4">
-                  <div class="list-group">
-                      <button type="button" class="list-group-item list-group-item-action active">Sobre Proveedor</button>
-                      <button type="button" class="list-group-item list-group-item-action">Productos</button>
-                      <button type="button" class="list-group-item list-group-item-action">Registrar Producto</button>
-                  </div>
-                </div>
+            <div class="form-group row">
+              <div class="col-md-4 text-center">
+                  <label class="form-control-label" for="nombre"><strong>Proveedor</strong></label>
+                  <p>{{$purchase->provider->name}}</p>
               </div>
-              <div class="col-lg-8 pl-lg-5">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h3>Información del Proveedor</h3>
-                  </div>
-                </div>
-                <div class="mt-4 py-2">
-                  <div class="row">
-                      <div class="form-group col-md-6">
-                          <strong><i class="fab fa-product-hunt mr-2"></i> Nombre</strong>
-                          <p class="text-muted">{{ $provider->name }}</p>
-                          <hr>
-
-                          <strong><i class="fas fa-address-card mr-2"></i> Código</strong>
-                          <p class="text-muted">{{ $provider->ruc_number }}</p>
-                          <hr>
-                      </div>
-                      <div class="col-md-6">
-                        <strong><i class="fas fa-mobile-alt mr-2"></i> Telefóno</strong>
-                        <p class="text-muted">{{ $provider->phone }}</p>
-                        <hr>
-
-                        <strong><i class="fas fa-envelope mr-2"></i> Correo</strong>
-                        <p class="text-muted">{{ $provider->email }}</p>
-                        <hr>
-
-                        <strong><i class="fas fa-map-marker-alt mr-2"></i> Dirección</strong>
-                        <p class="text-muted">{{ $provider->address }}</p>
-                        <hr>
-                      </div>
-                  </div>
-                </div>
+              <div class="col-md-4 text-center">
+                  <label class="form-control-label" for="num_compra"><strong>Número Compra</strong></label>
+                  <p>{{$purchase->id}}</p>
               </div>
+              <div class="col-md-4 text-center">
+                  <label class="form-control-label" for="num_compra"><strong>Comprador</strong></label>
+                  <p>{{$purchase->user->name}}</p>
+              </div>
+            </div>
+            <div class="table-responsive col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                      <th colspan="3"><p class="float-right">SUBTOTAL:</p></th>
+                      <th><p class="float-right">${{number_format($subtotal, 2, '.', ',')}}</p></th>
+                  </tr>
+                  <tr>
+                      <th colspan="3"><p class="float-right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p></th>
+                      <th><p class="float-right">${{number_format($subtotal * $purchase->tax/100, 2, '.', ',')}}</p></th>
+                  </tr>
+                  <tr>
+                      <th colspan="3"><p class="float-right">TOTAL:</p></th>
+                      <th><p class="float-right">${{number_format($purchase->total, 2, '.', ',')}}</p></th>
+                  </tr>
+  
+              </tfoot>
+                <tbody>
+                  @foreach($purchaseDetails as $purchaseDetail)
+                    <tr>
+                      <td>{{ $purchaseDetail->product->name }}</td>
+                      <td>${{ $purchaseDetail->price }}</td>
+                      <td>{{ $purchaseDetail->quantity }}</td>
+                      <td>${{ number_format($purchaseDetail->quantity *  $purchaseDetail->price, 2, '.', ',') }}</td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="card-footer">
-            <a href="{{ route('providers.index') }}" class="btn btn-primary float-right">Regresar</a>
+            <a href="{{ route('purchases.index') }}" class="btn btn-primary float-right">Regresar</a>
           </div>
         </div>
       </div>

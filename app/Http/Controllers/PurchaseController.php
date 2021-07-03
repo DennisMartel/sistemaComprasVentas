@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
+use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PurchaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $purchases = Purchase::all();
@@ -18,12 +27,16 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::get();
-        return view('admin.purchase.create', compact('providers'));
+        $products = Product::get();
+        return view('admin.purchase.create', compact('providers', 'products'));
     }
 
     public function store(StoreRequest $request)
     {
-        $purchase = Purchase::create($request->all());
+        $purchase = Purchase::create($request->all() + [
+            'user_id' => Auth::user()->id,
+            'purchase_date' => Carbon::now('America/El_Salvador'),
+        ]);
 
         foreach ($request->product_id as $key => $value) {
             $results[] = ['product_id' => $request->product_id[$key], 
@@ -32,12 +45,18 @@ class PurchaseController extends Controller
 
         $purchase->purchaseDetails()->createMany($results);
 
-        return redirect()->route('purchase.index');
+        return redirect()->route('purchases.index');
     }
     
     public function show(Purchase $purchase)
     {
-        return view('admin.purchase.index', compact('purchase'));
+        $subtotal = 0;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail) {
+            $subtotal = $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+
+        return view('admin.purchase.show', compact('purchase', 'purchaseDetails', 'subtotal'));
     }
     
     public function edit(Purchase $purchase)
@@ -49,12 +68,24 @@ class PurchaseController extends Controller
     public function update(UpdateRequest $request, Purchase $purchase)
     {
         $purchase->update($request->all());
-        return redirect()->route('purchase.index');
+        return redirect()->route('purchases.index');
     }
     
     public function destroy(Purchase $purchase)
     {
         $purchase->delete();
-        return redirect()->route('purchase.index');
+        return redirect()->route('purchases.index');
+    }
+
+    public function pdf(Purchase $purchase)
+    {
+        $subtotal = 0;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail) {
+            $subtotal = $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+
+        $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
+        return $pdf->download('Reporte_de_compra_'.$purchase->id.'.pdf');
     }
 }

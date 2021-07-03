@@ -49,16 +49,14 @@
               <tbody>
                 @foreach($purchases as $purchase)
                   <tr>
-                    <td>{{ $purchase->id }}</td>
+                    <td><a href="{{ route('purchases.show', $purchase) }}">{{ $purchase->id }}</a></td>
                     <td>{{ $purchase->purchase_date }}</td>
-                    <td>{{ $purchase->total }}</td>
+                    <td>${{ $purchase->total }}</td>
                     <td>{{ $purchase->status }}</td>
                     <td>
-                      {!! Form::open(['route' => ['purchases.destroy', $purchase], 'method' => 'DELETE']) !!}
-                      <a href="{{ route('purchases.edit', $purchase) }}" class="jsgrid-button jsgrid-edit-button" title="Editar categoria {{ $purchase->name }}"><i class="fas fa-edit"></i></a>
-                      
-                      <button type="submit" class="jsgrid-button jsgrid-delete-button text-danger" title="Eliminar categoria {{ $purchase->name }}" style="border: none; background: none; padding: 0;"><i class="far fa-trash-alt"></i></button>
-                      {!! Form::close() !!}
+                      <a href="{{ route('purchases.pdf', $purchase) }}" class="jsgrid-button jsgrid-edit-button text-danger" title=""><i class="fas fa-file-pdf"></i></a>
+                      <a href="" class="jsgrid-button jsgrid-edit-button text-warning" title=""><i class="fas fa-print"></i></a>
+                      <a href="{{ route('purchases.show', $purchase) }}" class="jsgrid-button jsgrid-edit-button text-success" title=""><i class="fas fa-eye"></i></a>
                     </td>
                   </tr>
                 @endforeach
