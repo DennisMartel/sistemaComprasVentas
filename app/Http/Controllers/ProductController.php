@@ -7,6 +7,7 @@ use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Category;
 use App\Models\Provider;
+use Illuminate\Support\Facades\Request;
 
 class ProductController extends Controller
 {
@@ -71,5 +72,19 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function get_products_by_barcode(Request $request){
+        if ($request->ajax()) {
+            $products = Product::where('code', $request->code)->firstOrFail();
+            return response()->json($products);
+        }
+    }
+
+    public function get_products_by_id(Request $request){
+        if ($request->ajax()) {
+            $products = Product::findOrFail($request->product_id);
+            return response()->json($products);
+        }
     }
 }

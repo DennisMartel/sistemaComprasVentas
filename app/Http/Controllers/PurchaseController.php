@@ -53,7 +53,7 @@ class PurchaseController extends Controller
         $subtotal = 0;
         $purchaseDetails = $purchase->purchaseDetails;
         foreach ($purchaseDetails as $purchaseDetail) {
-            $subtotal = $purchaseDetail->quantity * $purchaseDetail->price;
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
         }
 
         return view('admin.purchase.show', compact('purchase', 'purchaseDetails', 'subtotal'));
@@ -82,7 +82,7 @@ class PurchaseController extends Controller
         $subtotal = 0;
         $purchaseDetails = $purchase->purchaseDetails;
         foreach ($purchaseDetails as $purchaseDetail) {
-            $subtotal = $purchaseDetail->quantity * $purchaseDetail->price;
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
         }
 
         $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
