@@ -7,6 +7,11 @@ use App\Models\Business;
 
 class BusinessController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $business = Business::where('id', 1)->first();

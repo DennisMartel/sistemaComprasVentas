@@ -8,6 +8,11 @@ use App\Http\Requests\Provider\UpdateRequest;
 
 class ProviderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $providers = Provider::all();

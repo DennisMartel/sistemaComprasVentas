@@ -23,8 +23,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar navbar-success col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index-2.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="{{ route('home') }}"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('home') }}"><img src="{{ asset('images/logo-mini.svg') }}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -102,8 +102,12 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+              Creado por: <a href="https://github.com/DennisMartel" target="_blank" class="text-danger font-weight-bold">Dennis Alexander Martel</a>.
+            </span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+              Desarrollador Web. <i class="fa fa-code text-danger"></i>
+            </span>
           </div>
         </footer>
         <!-- partial -->

@@ -7,6 +7,11 @@ use App\Models\Printer;
 
 class PrinterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $printer = Printer::where('id', 1)->first();
