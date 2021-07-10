@@ -10,6 +10,7 @@ use App\Models\Purchase;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Request;
 
 class PurchaseController extends Controller
 {
@@ -87,5 +88,16 @@ class PurchaseController extends Controller
 
         $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
         return $pdf->download('Reporte_de_compra_'.$purchase->id.'.pdf');
+    }
+
+    public function upload(Request $request, Purchase $purchase)
+    {
+
+    }
+
+    public function change_status(Purchase $purchase)
+    {
+        $purchase->status == 'VALID' ? $purchase->update(['status' => 'CANCELED']) : $purchase->update(['status' => 'VALID']);
+        return redirect()->back();
     }
 }

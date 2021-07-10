@@ -10,6 +10,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Request;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
@@ -89,6 +90,17 @@ class SaleController extends Controller
         }
         $pdf = PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
         return $pdf->download('Reporte_de_venta_'.$sale->id.'.pdf');
+    }
+
+    public function upload(Request $request, Sale $sale)
+    {
+
+    }
+
+    public function change_status(Sale $sale)
+    {
+        $sale->status == 'VALID' ? $sale->update(['status' => 'CANCELED']) : $sale->update(['status' => 'VALID']);
+        return redirect()->back();
     }
 
     public function print(Sale $sale)

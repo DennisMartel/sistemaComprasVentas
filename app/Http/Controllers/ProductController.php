@@ -87,4 +87,15 @@ class ProductController extends Controller
             return response()->json($products);
         }
     }
+
+    public function upload(Request $request, Product $product)
+    {
+
+    }
+
+    public function change_status(Product $product)
+    {
+        $product->status == 'ACTIVE' ? $product->update(['status' => 'DESACTIVATED']) : $product->update(['status' => 'ACTIVE']);
+        return redirect()->back();
+    }
 }
