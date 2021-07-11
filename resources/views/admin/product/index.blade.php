@@ -54,9 +54,14 @@
                   <tr>
                     <td>{{ $product->id }}</td>
                     <td><a href="{{ route('products.show', $product) }}">{{ $product->name }}</a></td>
-                    <td>${{ number_format($product->sell_price, 2) }}</td>
+                    <td>${{ number_format($product->sell_price, 2, '.', ',') }}</td>
                     <td>{{ $product->stock }}</td>
-                    <td>{{ $product->status }}</td>
+                    <td>
+                      @if($product->status == 'ACTIVE')
+                        <a href="{{ route('products.change_status', $product) }}" class="btn btn-success">ACTIVO</a>
+                      @else
+                        <a href="{{ route('products.change_status', $product) }}" class="btn btn-danger">INACTIVO</a>
+                      @endif
                     <td>{{ $product->category->name }}</td>
                     <td><img src="{{ asset('image/'.$product->imagen) }}" alt="{{ $product->imagen }}"></td>
                     <td>

@@ -97,7 +97,9 @@ class PurchaseController extends Controller
 
     public function change_status(Purchase $purchase)
     {
-        $purchase->status == 'VALID' ? $purchase->update(['status' => 'CANCELED']) : $purchase->update(['status' => 'VALID']);
+        $purchase->status == 'VALID' 
+                ? $purchase->update(['status' => 'CANCELED']) 
+                : $purchase->update(['status' => 'VALID']);
         return redirect()->back();
     }
 }

@@ -47,7 +47,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        $user->roles()->sync($request->get('roles'));
+        $user->assignRole($request->get('role_id'));
+        // $user->roles()->sync($request->get('roles'));
         return redirect()->route('users.index');
     }
 

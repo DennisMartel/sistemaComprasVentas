@@ -28,7 +28,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $role = Role::create($request->all());
-        $role->permissions()->sync($request->get('permissions'));
+        $role->syncPermissions($request->get('permissions'));
         return redirect()->route('roles.index');
     }
 

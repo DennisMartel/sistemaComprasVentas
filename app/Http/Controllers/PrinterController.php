@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Printer\UpdateRequest;
 use App\Models\Printer;
+use Illuminate\Http\Request;
 
 class PrinterController extends Controller
 {
@@ -18,7 +18,7 @@ class PrinterController extends Controller
         return view('admin.printer.index', compact('printer'));
     }
 
-    public function update(UpdateRequest $request, Printer $printer)
+    public function update(Request $request, Printer $printer)
     {
         $printer->update($request->all());
         return redirect()->route('printers.index');

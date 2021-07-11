@@ -6,14 +6,14 @@
     @enderror
 </div>
 <div class="form-group">
-    <label for="client_id">Permisos</label>
-    <select name="client_id" id="client_id" class="form-control @error('client_id') is-invalid @enderror" value="{{ old('client_id') }}">
+    <label for="permissions">Permisos</label>
+    <select name="permissions" id="permissions" class="form-control @error('permissions') is-invalid @enderror" value="{{ old('permissions') }}">
         <option value="">Selecciona el Permiso</option>
         @foreach($permissions as $permission)
             <option value="{{ $permission->id }}">{{ $permission->name }}</option>
         @endforeach
     </select>
-    @error('client_id')
+    @error('permissions')
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>

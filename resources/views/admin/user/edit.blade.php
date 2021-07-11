@@ -40,17 +40,17 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" placeholder="Ingresa la contraseña" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
                 @error('password')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-            </div>
+            </div> --}}
             <h3 class="font-weight-normal text-muted">Listado de Roles</h3>
             @foreach ($roles as $role)
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" value="{{ $role->id }}" id="role-{{ $role->id }}">
+                    <input type="checkbox" class="custom-control-input" name="role_id" value="{{ $role->id }}" id="role-{{ $role->id }}">
                     <label class="custom-control-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
                 </div>
             @endforeach

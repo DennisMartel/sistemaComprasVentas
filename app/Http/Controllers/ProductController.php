@@ -8,7 +8,8 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\Support\Facades\Request;
-
+use \Milon\Barcode\DNS1D;
+use Picqer;
 class ProductController extends Controller
 {
     public function __construct()
@@ -38,9 +39,11 @@ class ProductController extends Controller
             $file->move(public_path('/image'), $image_name);
         }
 
-        Product::create($request->all() + [
+        $product = Product::create($request->all() + [
             'imagen' => $image_name,
         ]);
+
+        $product->update(['code' => $product->id]);
 
         return redirect()->route('products.index');
     }

@@ -56,8 +56,8 @@
                           <p class="text-muted">{{ $product->name }}</p>
                           <hr>
 
-                          <strong><i class="fas fa-address-card mr-2"></i> Código</strong>
-                          <p class="text-muted">{{ $product->code }}</p>
+                          <strong><i class="fas fa-barcode mr-2"></i> Código de barra</strong>
+                          <p class="text-muted">{!! DNS1D::getBarcodeHTML($product->code, 'C128A'); !!}</p>
                           <hr>
 
                           <strong><i class="fas fa-dollar-sign mr-2"></i> Precio Venta</strong>

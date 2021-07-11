@@ -52,7 +52,13 @@
                     <td><a href="{{ route('sales.show', $sale) }}">{{ $sale->id }}</a></td>
                     <td>{{ $sale->sale_date }}</td>
                     <td>${{ $sale->total }}</td>
-                    <td>{{ $sale->status }}</td>
+                    <td>
+                      @if($sale->status == 'VALID')
+                        <a href="{{ route('sales.change_status', $sale) }}" class="btn btn-success">VALIDA</a>
+                      @else
+                        <a href="{{ route('sales.change_status', $sale) }}" class="btn btn-danger">CANCELADA</a>
+                      @endif
+                    </td>
                     <td>
                       <a href="{{ route('sales.pdf', $sale) }}" class="jsgrid-button jsgrid-edit-button text-danger" title=""><i class="fas fa-file-pdf"></i></a>
                       <a href="{{ route('sales.print', $sale) }}" class="jsgrid-button jsgrid-edit-button text-warning" title=""><i class="fas fa-print"></i></a>
