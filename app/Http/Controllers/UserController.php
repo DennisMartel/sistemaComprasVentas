@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,8 +29,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-        $user->roles()->sync($request->get('roles'));
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ])->assignRole($request->rol);
+
         return redirect()->route('users.index');
     }
 
@@ -47,8 +52,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        $user->assignRole($request->get('role_id'));
-        // $user->roles()->sync($request->get('roles'));
+        $user->roles()->sync($request->rol);
         return redirect()->route('users.index');
     }
 

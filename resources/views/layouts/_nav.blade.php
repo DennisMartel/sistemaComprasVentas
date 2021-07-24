@@ -7,10 +7,10 @@
           </div>
           <div class="profile-name">
             <p class="name">
-              Bienvenido Dennis
+              Bienvenid@ {{ auth()->user()->name }}
             </p>
             <p class="designation text-white">
-              Administrador
+              {{ auth()->user()->roles()->pluck('name')->implode('') }}
             </p>
           </div>
         </div>
@@ -58,16 +58,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('users.index') }}">
-          <i class="fa fa-user-circle menu-icon"></i>
+        <a class="nav-link" data-toggle="collapse" href="#usuarios" aria-expanded="false" aria-controls="usuarios">
+          <i class="fa fa-users menu-icon"></i>
           <span class="menu-title">Usuarios</span>
+          <i class="menu-arrow"></i>
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('roles.index') }}">
-          <i class="fa fa-user-shield menu-icon"></i>
-          <span class="menu-title">Roles</span>
-        </a>
+        <div class="collapse" id="usuarios">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">Usuarios</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('permissions.index') }}">Permisos</a></li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#reportes" aria-expanded="false" aria-controls="reportes">
@@ -83,7 +85,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#configuraciones" aria-expanded="false" aria-controls="reportes">
+        <a class="nav-link" data-toggle="collapse" href="#configuraciones" aria-expanded="false" aria-controls="configuraciones">
           <i class="fa fa-cog menu-icon"></i>
           <span class="menu-title">Configuraciones</span>
           <i class="menu-arrow"></i>

@@ -47,13 +47,14 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div> --}}
-            <h3 class="font-weight-normal text-muted">Listado de Roles</h3>
-            @foreach ($roles as $role)
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="role_id" value="{{ $role->id }}" id="role-{{ $role->id }}">
-                    <label class="custom-control-label" for="role-{{ $role->id }}">{{ $role->name }}</label>
-                </div>
-            @endforeach
+            <div class="form-group">
+              <select name="rol" id="rol" class="form-control">
+                <option value="">-- Seleccionar rol --</option>
+                @foreach ($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+              </select>
+            </div>          
           <button type="submit" class="btn btn-primary">Actualizar</button>
           <a href="{{ route('users.index') }}" class="btn btn-light">Cancelar</a>
         {!! Form::close() !!}
