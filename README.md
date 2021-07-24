@@ -28,7 +28,7 @@
 </ul>
 
 <h2>Demo del Sistema</h2>
-<a href="https://dennismartel.cu.ma/">Cpck para ver demo</a>
+<a href="https://dennismartel.cu.ma/">Cick para ver demo</a>
 <p>Usuario: <b>demo@gmail.com</b></p>
 <p>Contraseña: <b>demo1234</b></p>
 
