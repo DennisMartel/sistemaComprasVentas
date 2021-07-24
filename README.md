@@ -1,5 +1,5 @@
 <h2>Sistema Punto de Venta</h2>
-<h6>Proyecto sistema punto de venta para micronegocios y pequeñas empresas</h6>
+<>Proyecto sistema punto de venta para micronegocios y pequeñas empresas</>
 
 <h2>Herramientas usadas para el desarrollo del sistema:</h2>
 <ul>
@@ -12,19 +12,19 @@
 
 <h2>Módulos del Sistema</h2>
 <ul>
-    <li><h6>Inicio de sesión para usuarios</h6><li>
-    <li><h6>Gestión de Productos</h6><li>
-    <li><h6>Gestión de Categorias</h6><li>
-    <li><h6>Gestión de Proveedores</h6><li>
-    <li><h6>Gestión de Clientes</h6><li>
-    <li><h6>Gestión de Compras</h6><li>
-    <li><h6>Gestión de Ventas</h6><li>
-    <li><h6>Gestión de Usuarios</h6><li>
-    <li><h6>Gestión de Roles y Permisos</h6><li>
-    <li><h6>Configuración de Impresora</h6><li>
-    <li><h6>Configuración de Empresa o Negocio</h6><li>
-    <li><h6>Reportes de Compras y Ventas (PDF)</h6><li>
-    <li><h6>Gráficos Estadisticos de Compras y Ventas</h6><li>
+    <li>Inicio de sesión para usuarios</><li>
+    <li>Gestión de Productos<li>
+    <li>Gestión de Categorias<li>
+    <li>Gestión de Proveedores<li>
+    <li>Gestión de Clientes<li>
+    <li>Gestión de Compras<li>
+    <li>Gestión de Ventas<li>
+    <li>Gestión de Usuarios<li>
+    <li>Gestión de Roles y Permisos<li>
+    <li>Configuración de Impresora<li>
+    <li>Configuración de Empresa o Negocio<li>
+    <li>Reportes de Compras y Ventas (PDF)<li>
+    <li>Gráficos Estadisticos de Compras y Ventas<li>
 </ul>
 
 <h2>Demo del Sistema</h2>
