@@ -1,34 +1,34 @@
 <h2>Sistema Punto de Venta</h2>
-<>Proyecto sistema punto de venta para micronegocios y pequeñas empresas</>
+<p>Proyecto sistema punto de venta para micronegocios y pequeñas empresas</p>
 
 <h2>Herramientas usadas para el desarrollo del sistema:</h2>
 <ul>
-    <li>HTML<li>
-    <li>CSS<li>
-    <li>JAVSCRIPT<li>
-    <li>PHP<li>
-    <li>framework LARAVEL<li>
+    <p>* HTML<p>
+    <p>* CSS<p>
+    <p>* JAVSCRIPT<p>
+    <p>* PHP<p>
+    <p>* framework LARAVEL<p>
 </ul>
 
 <h2>Módulos del Sistema</h2>
 <ul>
-    <li>Inicio de sesión para usuarios</><li>
-    <li>Gestión de Productos<li>
-    <li>Gestión de Categorias<li>
-    <li>Gestión de Proveedores<li>
-    <li>Gestión de Clientes<li>
-    <li>Gestión de Compras<li>
-    <li>Gestión de Ventas<li>
-    <li>Gestión de Usuarios<li>
-    <li>Gestión de Roles y Permisos<li>
-    <li>Configuración de Impresora<li>
-    <li>Configuración de Empresa o Negocio<li>
-    <li>Reportes de Compras y Ventas (PDF)<li>
-    <li>Gráficos Estadisticos de Compras y Ventas<li>
+    <p>* Inicio de sesión para usuarios</><p>
+    <p>* Gestión de Productos<p>
+    <p>* Gestión de Categorias<p>
+    <p>* Gestión de Proveedores<p>
+    <p>* Gestión de Cpentes<p>
+    <p>* Gestión de Compras<p>
+    <p>* Gestión de Ventas<p>
+    <p>* Gestión de Usuarios<p>
+    <p>* Gestión de Roles y Permisos<p>
+    <p>* Configuración de Impresora<p>
+    <p>* Configuración de Empresa o Negocio<p>
+    <p>* Reportes de Compras y Ventas (PDF)<p>
+    <p>* Gráficos Estadisticos de Compras y Ventas<p>
 </ul>
 
 <h2>Demo del Sistema</h2>
-<a href="https://dennismartel.cu.ma/">Click para ver demo</a>
+<a href="https://dennismartel.cu.ma/">Cpck para ver demo</a>
 <p>Usuario: <b>demo@gmail.com</b></p>
 <p>Contraseña: <b>demo1234</b></p>
 
